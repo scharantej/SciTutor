@@ -1,0 +1,34 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Schedule</title>
+</head>
+<body>
+<h1>Schedule</h1>
+<form action="/add_session" method="post">
+<label for="tutor_id">Tutor:</label>
+<select name="tutor_id">
+{% for tutor in tutors %}
+<option value="{{ tutor.id }}">{{ tutor.name }}</option>
+{% endfor %}
+</select>
+<label for="student_id">Student:</label>
+<select name="student_id">
+{% for student in students %}
+<option value="{{ student.id }}">{{ student.name }}</option>
+{% endfor %}
+</select>
+<label for="date">Date:</label>
+<input type="date" name="date">
+<label for="time">Time:</label>
+<input type="time" name="time">
+<label for="duration">Duration (in minutes):</label>
+<input type="number" name="duration">
+<input type="submit" value="Add Session">
+</form>
+</body>
+</html>
+
+
