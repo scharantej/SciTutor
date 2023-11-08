@@ -1,0 +1,25 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Progress</title>
+</head>
+<body>
+<h1>Progress</h1>
+<ul>
+{% for student in students %}
+<li>{{ student.name }} ({{ student.grade }})</li>
+<ul>
+{% for session in sessions %}
+{% if session.student_id == student.id %}
+<li>{{ session.date }} - {{ session.time }} - {{ session.duration }} minutes</li>
+{% endif %}
+{% endfor %}
+</ul>
+{% endfor %}
+</ul>
+</body>
+</html>
+
+
