@@ -3,18 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Progress</title>
+<title>Track Your Progress</title>
 </head>
 <body>
-<h1>Progress</h1>
+<h1>Track Your Progress</h1>
 <ul>
 {% for student in students %}
-<li>{{ student.name }} ({{ student.grade }})</li>
+<li>{{ student.name }}</li>
 <ul>
 {% for session in sessions %}
-{% if session.student_id == student.id %}
-<li>{{ session.date }} - {{ session.time }} - {{ session.duration }} minutes</li>
-{% endif %}
+<li>{{ session.subject }}: {{ session.date }} at {{ session.time }}</li>
 {% endfor %}
 </ul>
 {% endfor %}
