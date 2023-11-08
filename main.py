@@ -10,8 +10,9 @@ class Tutor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    subject = db.Column(db.String(80), nullable=False)
-    rate = db.Column(db.Float, nullable=False)
+    phone_number = db.Column(db.String(20), unique=True, nullable=False)
+    subjects = db.Column(db.String(255), nullable=False)
+    availability = db.Column(db.String(255), nullable=False)
 
     def __repr__(self):
         return '<Tutor %r>' % self.name
@@ -20,7 +21,9 @@ class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    grade = db.Column(db.Integer, nullable=False)
+    phone_number = db.Column(db.String(20), unique=True, nullable=False)
+    subjects = db.Column(db.String(255), nullable=False)
+    grade_level = db.Column(db.String(20), nullable=False)
 
     def __repr__(self):
         return '<Student %r>' % self.name
@@ -29,9 +32,9 @@ class Session(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     tutor_id = db.Column(db.Integer, db.ForeignKey('tutor.id'), nullable=False)
     student_id = db.Column(db.Integer, db.ForeignKey('student.id'), nullable=False)
+    subject = db.Column(db.String(255), nullable=False)
     date = db.Column(db.Date, nullable=False)
     time = db.Column(db.Time, nullable=False)
-    duration = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
         return '<Session %r>' % self.id
@@ -49,7 +52,8 @@ def tutors():
 def schedule():
     tutors = Tutor.query.all()
     students = Student.query.all()
-    return render_template('schedule.html', tutors=tutors, students=students)
+    subjects = Subject.query.all()
+    return render_template('schedule.html', tutors=tutors, students=students, subjects=subjects)
 
 @app.route('/progress')
 def progress():
@@ -66,10 +70,11 @@ def add_tutor():
     if request.method == 'POST':
         name = request.form['name']
         email = request.form['email']
-        subject = request.form['subject']
-        rate = request.form['rate']
-        tutor = Tutor(name=name, email=email, subject=subject, rate=rate)
-        db.session.add(tutor)
+        phone_number = request.form['phone_number']
+        subjects = request.form['subjects']
+        availability = request.form['availability']
+        new_tutor = Tutor(name=name, email=email, phone_number=phone_number, subjects=subjects, availability=availability)
+        db.session.add(new_tutor)
         db.session.commit()
         return redirect(url_for('tutors'))
     return render_template('add_tutor.html')
@@ -79,9 +84,11 @@ def add_student():
     if request.method == 'POST':
         name = request.form['name']
         email = request.form['email']
-        grade = request.form['grade']
-        student = Student(name=name, email=email, grade=grade)
-        db.session.add(student)
+        phone_number = request.form['phone_number']
+        subjects = request.form['subjects']
+        grade_level = request.form['grade_level']
+        new_student = Student(name=name, email=email, phone_number=phone_number, subjects=subjects, grade_level=grade_level)
+        db.session.add(new_student)
         db.session.commit()
         return redirect(url_for('students'))
     return render_template('add_student.html')
@@ -91,11 +98,11 @@ def add_session():
     if request.method == 'POST':
         tutor_id = request.form['tutor_id']
         student_id = request.form['student_id']
+        subject = request.form['subject']
         date = request.form['date']
         time = request.form['time']
-        duration = request.form['duration']
-        session = Session(tutor_id=tutor_id, student_id=student_id, date=date, time=time, duration=duration)
-        db.session.add(session)
+        new_session = Session(tutor_id=tutor_id, student_id=student_id, subject=subject, date=date, time=time)
+        db.session.add(new_session)
         db.session.commit()
         return redirect(url_for('sessions'))
     return render_template('add_session.html')
