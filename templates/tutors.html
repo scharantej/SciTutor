@@ -1,0 +1,18 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tutors</title>
+</head>
+<body>
+<h1>Tutors</h1>
+<ul>
+{% for tutor in tutors %}
+<li>{{ tutor.name }} ({{ tutor.subject }})</li>
+{% endfor %}
+</ul>
+</body>
+</html>
+
+
