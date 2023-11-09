@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Schedule a Tutoring Session</h1>
-<form action="/schedule" method="post">
+<form action="/add_session" method="post">
 <label for="tutor_id">Tutor:</label>
 <select name="tutor_id">
 {% for tutor in tutors %}
@@ -22,20 +22,16 @@
 {% endfor %}
 </select>
 <br>
-<label for="subject">Subject:</label>
-<select name="subject">
-{% for subject in subjects %}
-<option value="{{ subject.id }}">{{ subject.name }}</option>
-{% endfor %}
-</select>
-<br>
 <label for="date">Date:</label>
 <input type="date" name="date">
 <br>
 <label for="time">Time:</label>
 <input type="time" name="time">
 <br>
-<input type="submit" value="Schedule">
+<label for="duration">Duration (in minutes):</label>
+<input type="number" name="duration">
+<br>
+<input type="submit" value="Schedule Session">
 </form>
 </body>
 </html>
