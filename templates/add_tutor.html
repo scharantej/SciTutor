@@ -3,19 +3,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Add Tutor</title>
+<title>Add a Tutor</title>
 </head>
 <body>
-<h1>Add Tutor</h1>
+<h1>Add a Tutor</h1>
 <form action="/add_tutor" method="post">
 <label for="name">Name:</label>
 <input type="text" name="name">
+<br>
 <label for="email">Email:</label>
 <input type="email" name="email">
+<br>
 <label for="subject">Subject:</label>
 <input type="text" name="subject">
-<label for="rate">Rate:</label>
+<br>
+<label for="rate">Rate (per hour):</label>
 <input type="number" name="rate">
+<br>
 <input type="submit" value="Add Tutor">
 </form>
 </body>
