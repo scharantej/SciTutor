@@ -1,15 +1,25 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>Science Tutoring Website</title>
+    <title>Science Tutoring</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
 </head>
 <body>
-<h1>Welcome to the Science Tutoring Website!</h1>
-<p>This website allows students to find tutors, schedule tutoring sessions, and track their progress.</p>
-<p>To get started, please <a href="/tutors">browse our list of tutors</a> or <a href="/schedule">schedule a tutoring session</a>.</p>
+    <h1>Welcome to the Science Tutoring Website!</h1>
+    <p>Explore the fascinating world of science with our expert tutors.</p>
+
+    <h2>Popular Sci-Fi Books</h2> 
+    <ul> 
+        <li>Dune by Frank Herbert</li>
+        <li>The Hitchhiker's Guide to the Galaxy by Douglas Adams</li>
+        <li>Ender's Game by Orson Scott Card</li>
+        <li>1984 by George Orwell</li>
+        <li>The Martian by Andy Weir</li> 
+        </ul> 
+
+    <a href="{{ url_for('schedule') }}">Schedule a Session</a>
+    <a href="{{ url_for('tutors') }}">View Tutors</a>
+    <a href="{{ url_for('resources') }}">Learning Resources</a>
+
 </body>
 </html>
-
-
