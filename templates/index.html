@@ -1,25 +1,55 @@
-<!DOCTYPE html>
-<html>
-<head>
+
+    <!DOCTYPE html>
+    <html>
+    <head>
     <title>Science Tutoring</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
-</head>
-<body>
-    <h1>Welcome to the Science Tutoring Website!</h1>
-    <p>Explore the fascinating world of science with our expert tutors.</p>
-
-    <h2>Popular Sci-Fi Books</h2> 
-    <ul> 
-        <li>Dune by Frank Herbert</li>
-        <li>The Hitchhiker's Guide to the Galaxy by Douglas Adams</li>
-        <li>Ender's Game by Orson Scott Card</li>
-        <li>1984 by George Orwell</li>
-        <li>The Martian by Andy Weir</li> 
-        </ul> 
-
-    <a href="{{ url_for('schedule') }}">Schedule a Session</a>
-    <a href="{{ url_for('tutors') }}">View Tutors</a>
-    <a href="{{ url_for('resources') }}">Learning Resources</a>
-
-</body>
-</html>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+    <div class="header">
+        <h1>Welcome to the Science Tutoring Website</hihmc>
+        <p>We provide a comprehensive platform for students to excel in science.</p>
+    </div>
+    
+    <div class="features">
+        <h2>Our Features</h2>
+        <div class="feature">
+            <img src="{{ url_for('static', filename='images/tutors.png') }}" alt="Tutors icon">
+            <h3>Find Tutors</h3>
+            <p>Browse through our list of qualified tutors and their specialties.</p>
+        </div>
+        <div class="feature">
+            <img src="{{ url_for('static', filename='images/schedule.png') }}" alt="Schedule icon">
+            <h3>Schedule Sessions</h3>
+            <p>Conveniently book tutoring sessions with your preferred tutor.</p>
+        </div>
+        <div class="feature">
+            <img src="{{ url_for('static', filename='images/progress.png') }}" alt="Progress icon">
+            <h3>Track Progress</h3>
+            <p>Monitor your learning journey and see your improvements over time.</p>
+        </div>
+        <div class="feature">
+            <img src="{{ url_for('static', filename='images/resources.png') }}" alt="Resources icon">
+            <h3>Access Resources</h3>
+            <p>Utilize our collection of practice tests, study guides, and other learning materials.</p>
+        </div>
+    </div>
+    
+    <div class="why-choose-us">
+        <h2>Why Choose Us</h2>
+        <ul>
+            <li>Expert Tutors: Our tutors are experienced and dedicated to student success.</li>
+            <li>Personalized Learning: We tailor our approach to meet your unique needs.</li>
+            <li>Affordable Pricing: Quality education should be accessible to everyone.</li>
+        </ul>
+    </div>
+    
+    <div class="call-to-action">
+        <a href="{{ url_for('tutors') }}">Meet Our Tutors</a>
+        <a href="{{ url_for('schedule') }}">Schedule a Session</a>
+        <a href="{{ url_for('progress') }}">Track Your Progress</a>
+        <a href="{{ url_for('resources') }}">Explore Resources</a>
+    </div>
+    </body>
+    </html>
+    
